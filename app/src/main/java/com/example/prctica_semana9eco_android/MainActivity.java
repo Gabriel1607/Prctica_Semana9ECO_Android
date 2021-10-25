@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
+
+import model.Instruct;
+
 public class MainActivity extends AppCompatActivity implements OnMessage{
 private ImageView bananoBtn,bananoBtn2,aguacateBtn,fresaBtn;
     private UDPConnection UDP;
@@ -24,8 +28,37 @@ private ImageView bananoBtn,bananoBtn2,aguacateBtn,fresaBtn;
 
         UDP = new UDPConnection();
         UDP.start();
-        UDP.setObserver(this);
+        bananoBtn.setOnClickListener(
+                (v) ->{
+                    Instruct instruct = new Instruct("BANANO");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(instruct);
+                    UDP.sendMessage(json);
+                });
 
+        bananoBtn2.setOnClickListener(
+                (v) ->{
+                    Instruct instruct = new Instruct("BANANOP");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(instruct);
+                    UDP.sendMessage(json);
+                });
+
+        fresaBtn.setOnClickListener(
+                (v) ->{
+                    Instruct instruct = new Instruct("FRESA");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(instruct);
+                    UDP.sendMessage(json);
+                });
+
+        aguacateBtn.setOnClickListener(
+                (v) ->{
+                    Instruct instruct = new Instruct("AGUACATE");
+                    Gson gson = new Gson();
+                    String json = gson.toJson(instruct);
+                    UDP.sendMessage(json);
+                });
     }
 
     @Override
