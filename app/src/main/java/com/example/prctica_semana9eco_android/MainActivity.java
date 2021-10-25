@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -63,6 +64,11 @@ private ImageView bananoBtn,bananoBtn2,aguacateBtn,fresaBtn;
 
     @Override
     public void onReceivedMessage(String msg) {
+        runOnUiThread(
+                ()->{
+                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
+                });
     }
+
 }
